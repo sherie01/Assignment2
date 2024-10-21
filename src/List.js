@@ -1,13 +1,14 @@
 import "./list.css";
 
-export default function List(props) {
+export default function List({ Img, productName, quantity, price, onEdit, onDelete }) {
   return (
     <div className="List">
-      <img src={props.Img} alt={props.productName} />
-      <p>{props.productName}</p>
-      <button id="btn-1"> Edit </button>
-      <button id="btn-2"> Remove </button>
+      <img src={Img} alt={productName} />
+      <p className="list-name">{productName}</p>
+      <p className="list-quantity">Quantity: {quantity}</p>
+      <p className="list-price">Price: ₱{price}</p> {/* Display formatted price */}
+      <button className="edit-button" onClick={onEdit}>Edit</button> {/* Edit button */}
+      <button className="remove-button" onClick={onDelete}>Delete</button> {/* Delete button */}
     </div>
   );
 }
-

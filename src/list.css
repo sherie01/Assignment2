@@ -1,58 +1,50 @@
 .List {
-    background: #ffffff9f; 
-    margin: 20px 650px;
-    padding: 20px; 
+    background: rgba(255, 255, 255, 0.9);
+    margin: 20px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    text-align: center; 
-    border-radius: 10px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-    border: 1px solid #ccc; /* Light gray border */
-    transition: transform 0.2s;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.List p {
- font-family: 'Courier New', Courier, monospace;
- font-weight: bolder;
+/* Text alignment and font style for product info */
+.list-name, .list-quantity, .list-price {
+    font-weight: 500;
+    margin: 5px 0;
 }
 
-.List img {
- width: 100px;
- margin-top: 10px;
-}
-
-.List button {
-    padding: 5px;
+.edit-button, .remove-button {
+    padding: 8px;
     margin-bottom: 10px;
     border-radius: 5px;
     border: none;
+    width: 100%;
+    font-size: 14px;
 }
 
-.List #btn-1 {
-    background-color: rgba(0, 128, 0, 0.766);
+.edit-button {
+    background-color: rgba(0, 128, 0, 0.8);
     color: white;
-    width: 57px;
 }
 
-.List #btn-1:hover{
+.edit-button:hover {
     background-color: green;
     cursor: pointer;
 }
 
-.List #btn-2 {
-    background-color: rgba(255, 0, 0, 0.712);
-    color: rgb(255, 255, 255);
+.remove-button {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
 }
 
-.List #btn-2:hover{
+.remove-button:hover {
     background-color: red;
     cursor: pointer;
-}
-
-@media (max-width: 600px) {
-
- .List { margin: 20px 80px;
- }
-
 }

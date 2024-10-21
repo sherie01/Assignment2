@@ -1,9 +1,9 @@
 import "./add.css";
 
-export default function Add() {
-    return (
-      <div className="Add">
-        <button> Add Item </button>
-      </div>
-    );
-  }
+export default function Add({ openModal }) {
+  return (
+    <div className="Add">
+      <button onClick={openModal}> Add Item </button>
+    </div>
+  );
+}

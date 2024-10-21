@@ -1,27 +1,66 @@
+import React from 'react';
 import "./modal.css";
 
-export default function Modal() {
+const Modal = ({ isOpen, onClose, onSubmit, item, setItem }) => {
+  if (!isOpen) return null;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setItem({ ...item, image: imageUrl });
+    }
+  };
+
   return (
-    <div id="addItemModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeAddItemModal()">&times;</span>
-            <h2>Add Grocery Item</h2>
-            <form id="add-item-form">
-                <input type="text" id="product-name" placeholder="Product Name" required />
-                <input type="text" id="brand" placeholder="Brand" required />
-                <input type="number" id="price" placeholder="Price" required />
-                <input type="text" id="weight" placeholder="Weight/Volume" required />
-                <input type="number" id="quantity" placeholder="Quantity" required />
-                <input type="text" id="store" placeholder="Store" required />
-                <input type="file" id="image" accept="image/*" />
-                <select id="category">
-                    <option value="Fruit">Fruit</option>
-                    <option value="Vegetable">Vegetable</option>
-                    <option value="Dairy">Dairy</option>
-                </select>
-                <button type="submit">Add Item</button>
-            </form>
-        </div>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <h2 className="modal-title">{item.editIndex !== null ? "Edit Item" : "Add New Item"}</h2>
+        <form onSubmit={handleSubmit} className="modal-form">
+          <input
+            type="text"
+            value={item.name}
+            onChange={(e) => setItem({ ...item, name: e.target.value })}
+            placeholder="Product Name"
+            className="modal-input"
+            required
+          />
+          <input
+            type="number"
+            value={item.quantity}
+            onChange={(e) => setItem({ ...item, quantity: e.target.value })}
+            placeholder="Quantity"
+            className="modal-input"
+            required
+          />
+          <input
+            type="number"
+            value={item.price}
+            onChange={(e) => setItem({ ...item, price: e.target.value })}
+            placeholder="Price"
+            className="modal-input"
+            required
+          />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="modal-input"
+          />
+          {item.image && <img src={item.image} alt="Product" className="uploaded-image" />}
+          <button type="submit" className="modal-submit-button">
+            {item.editIndex !== null ? "Update Item" : "Add Item"}
+          </button>
+          <button type="button" className="modal-close-button" onClick={onClose}>Close</button>
+        </form>
+      </div>
     </div>
   );
-}
+};
+
+export default Modal;
