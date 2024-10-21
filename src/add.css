@@ -1,0 +1,17 @@
+.Add{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Add button{
+    padding: 10px;
+    width: 170px;
+    border-radius: 5px;
+    background-color: rgba(0, 128, 0, 0.701);
+    border: none;
+    color: white;
+}
+.Add button:hover{
+    background-color: green;
+    cursor: pointer;
+}
