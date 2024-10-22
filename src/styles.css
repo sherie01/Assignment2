@@ -1,3 +1,15 @@
 body {
-    background-color:  rgba(11, 230, 11, 0.671);
+    background-color: rgba(11, 230, 11, 0.67);
+    margin: 0;
+    padding: 10px;
+    width: 100%; /* Full width */
+    max-width: 500px;
+    margin: auto;
+    font-family: Arial, sans-serif; /* Added a default font for better readability */
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 1px; /* Reduce padding on smaller screens */
+    }
 }
