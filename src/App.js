@@ -18,7 +18,7 @@ function App() {
   // Open modal for editing an existing item
   const openEditModal = (index) => {
     const itemToEdit = listItems[index];
-    setItem({ ...itemToEdit, editIndex: index });
+    setItem({ ...itemToEdit, editIndex: index, price: itemToEdit.price.toString() }); // Ensure price is a string
     setModalOpen(true);
   };
 
@@ -30,20 +30,21 @@ function App() {
 
   // Add or Update item
   const handleAddItem = () => {
+    // Check that name, quantity, and price are not empty strings
     if (item.name.trim() !== "" && item.quantity.trim() !== "" && item.price.trim() !== "") {
-      const newItem = { ...item, price: parseFloat(item.price) }; // Ensure price is a number
+      const newItem = { ...item, price: parseFloat(item.price) }; // Convert price to a number
       const updatedItems = item.editIndex !== null
-        ? listItems.map((_, index) => (index === item.editIndex ? newItem : _)) // Update item
-        : [...listItems, newItem]; // Add new item
+        ? listItems.map((_, index) => (index === item.editIndex ? newItem : _)) 
+        : [...listItems, newItem]; 
 
       setListItems(updatedItems);
-      closeModal(); // Close modal after adding/updating
+      closeModal(); 
     }
   };
 
   // Delete item from list
   const handleDeleteItem = (index) => {
-    const updatedItems = listItems.filter((_, i) => i !== index); // Remove the item at the index
+    const updatedItems = listItems.filter((_, i) => i !== index); 
     setListItems(updatedItems);
   };
 
@@ -54,12 +55,12 @@ function App() {
       {listItems.map((listItem, index) => (
         <List
           key={index}
-          Img={listItem.image || "image/avocado.png"} // Default image if none provided
+          Img={listItem.image || "image/avocado.png"} 
           productName={listItem.name}
           quantity={listItem.quantity}
-          price={listItem.price.toLocaleString(undefined, { minimumFractionDigits: 2 })} // Format price
-          onEdit={() => openEditModal(index)} // Pass index to openEditModal
-          onDelete={() => handleDeleteItem(index)} // Pass index to handleDeleteItem
+          price={listItem.price.toLocaleString(undefined, { minimumFractionDigits: 0 })}
+          onEdit={() => openEditModal(index)}
+          onDelete={() => handleDeleteItem(index)} 
         />
       ))}
       {isModalOpen && (

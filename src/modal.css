@@ -8,37 +8,44 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark background for the overlay */
+    background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .modal-content {
     background-color: #f9f9f9;
     padding: 25px;
     border-radius: 8px;
-    width: 90%;
-    max-width: 400px; /* Adjusted width */
+    width: 75%;
+    max-width: 400px; 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     animation: fadeIn 0.3s ease;
 }
 
 .modal-title {
     color: #2c3e50;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 25px;
     text-align: center;
 }
 
 .modal-input {
-    width: calc(100% - 20px); /* Adjusted width */
+    width: 93%; 
     padding: 10px;
     border: 2px solid #27ae60;
     border-radius: 5px;
     font-size: 16px;
     transition: border-color 0.3s;
+    margin-bottom: 5px;
 }
 
 .modal-input:focus {
     border-color: #2ecc71;
     outline: none;
+}
+
+.uploaded-image {
+    margin-left: 40px;
+    width: 70%;
 }
 
 .modal-button-container {
@@ -57,12 +64,14 @@
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
-    width: 48%; /* Width for buttons */
+    width: 40%; 
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 .modal-submit-button:hover,
 .modal-close-button:hover {
-    background-color: #2ecc71; /* Lively hover effect */
+    background-color: #2ecc71; 
 }
 
 @keyframes fadeIn {
